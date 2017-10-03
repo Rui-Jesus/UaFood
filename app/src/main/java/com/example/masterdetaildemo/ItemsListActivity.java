@@ -48,6 +48,8 @@ public class ItemsListActivity extends AppCompatActivity implements ItemsListFra
     public void onItemSelected(final Item item) {
         if (isTwoPane) { // single activity with list and detail
             // Replace framelayout with new detail fragment
+            String information = ItemsListActivity.client.getCantines(ItemsListActivity.jsonString, item.getTitle());
+            item.setInfo(information);
             ItemDetailFragment fragmentItem = ItemDetailFragment.newInstance(item);
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.flDetailContainer, fragmentItem);
