@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">MasterDetailDemo</string>
+    <string name="app_name">FoodUa</string>
     <string name="food_menus_endpoint" templateMergeStrategy="preserve" translatable="false">http://services.web.ua.pt/sas/ementas?date=week&amp;format=json</string>
 </resources>

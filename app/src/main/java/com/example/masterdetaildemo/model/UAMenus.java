@@ -32,12 +32,16 @@ public class UAMenus {
         for (DailyOption option : this.getDailyMenusPerCanteen()) {
             builder.append("\nDay: ");
             builder.append(dateFormater.format(option.getDate()));
-            builder.append("\nCanteen: ");
-            builder.append(option.getCanteenSite());
+            //builder.append("\nCan: ");
+            //builder.append(option.getCanteenSite());
             builder.append("\nMeal type: ");
             builder.append(option.getDailyMeal());
             builder.append("\nIs open? ");
-            builder.append(option.isAvailable());
+            if(option.isAvailable())
+                builder.append("Yes");
+            else
+                builder.append("No");
+            //builder.append(option.isAvailable());
             builder.append("\n");
             for (MealCourse mealOption: option.getMealCourseList() ) {
                 builder.append("\nCourse: ");   builder.append(mealOption.getMealCourseOrder());

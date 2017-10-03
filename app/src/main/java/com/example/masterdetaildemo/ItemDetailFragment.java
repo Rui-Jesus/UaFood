@@ -21,8 +21,6 @@ public class ItemDetailFragment extends Fragment {
         item = (Item) getArguments().getSerializable("item");
     }
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

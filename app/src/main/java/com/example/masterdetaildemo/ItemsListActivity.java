@@ -1,6 +1,7 @@
 package com.example.masterdetaildemo;
 
 import android.content.Intent;
+import android.os.StrictMode;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,15 +14,24 @@ import com.example.masterdetaildemo.net.UAMenusApiClient;
 public class ItemsListActivity extends AppCompatActivity implements ItemsListFragment.OnListItemSelectedListener{
 
     private boolean isTwoPane = false;
-    private UAMenusApiClient client = null;
+    public static UAMenusApiClient client = null;
+    public static String jsonString = "";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_items_list);
         // Call this to determine which layout we are in (tablet or phone)
         determinePaneLayout();
+
+        String url = "http://services.web.ua.pt/sas/ementas?date=week&place=santiago&format=json";
+        if (null == client) {
+            client = new UAMenusApiClient(url);
+        }
+        jsonString = client.getMenusForCanteen2();
     }
 
     private void determinePaneLayout() {
